@@ -2,42 +2,52 @@
 Date: 
 
 ### AIM:
-To Compute the AutoCorrelation Function (ACF) of the data for the first 35 lags to determine the model
-type to fit the data.
+To Compute the AutoCorrelation Function (ACF) of the given study hour score data..
 ### ALGORITHM:
 1. Import the necessary packages
-2. Find the mean, variance and then implement normalization for the data.
-3. Implement the correlation using necessary logic and obtain the results
-4. Store the results in an array
-5. Represent the result in graphical representation as given below.
+2. give the necessary score data.
+3. Find the mean, variance and then implement normalization for the data.
+4. Implement the correlation using necessary logic and obtain the results
+5. Store the results in an array
+6. Represent the result in graphical representation as given below.
 ### PROGRAM:
+```
+import numpy as np
 import matplotlib.pyplot as plt
 
-import numpy as np
 
-data = [3, 16, 156, 47, 246, 176, 233, 140, 130,
-101, 166, 201, 200, 116, 118, 247,
-209, 52, 153, 232, 128, 27, 192, 168, 208,
-187, 228, 86, 30, 151, 18, 254,
-76, 112, 67, 244, 179, 150, 89, 49, 83, 147, 90,
-33, 6, 158, 80, 35, 186, 127]
+scores = np.array([21, 47, 27, 75, 30, 20, 88, 60, 81, 25,
+                   85, 62, 41, 42, 17, 95, 30, 24, 67, 69,
+                   30, 54, 35, 76, 86])
 
-lags = range(35)
+n = len(scores)
+lags = 35
+acf_values = np.zeros(lags)
 
 
-#Pre-allocate autocorrelation table
+mean_scores = np.mean(scores)
+variance_scores = np.var(scores)
 
-#Mean
+normalized_data = scores - mean_scores
 
-#Variance
+for lag in range(lags):
+    autocovariance = 0
+    for i in range(n - lag):
+        autocovariance += normalized_data[i] * normalized_data[i + lag]
+    acf_values[lag] = autocovariance / (n * variance_scores)
 
-#Normalized data
-
-#Go through lag components one-by-one
-
-#display the graph
+plt.figure(figsize=(10, 6))
+plt.stem(range(lags), acf_values, use_line_collection=True)
+plt.title('Autocorrelation Function (ACF) for Scores')
+plt.xlabel('Lags')
+plt.ylabel('ACF Value')
+plt.grid(True)
+plt.show()
+```
 
 ### OUTPUT:
+![download](https://github.com/user-attachments/assets/86e4b414-3bd2-4452-8fb4-bbb138da80e2)
+
 
 ### RESULT:
         Thus we have successfully implemented the auto correlation function in python.
