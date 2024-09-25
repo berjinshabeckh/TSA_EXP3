@@ -14,12 +14,7 @@ To Compute the AutoCorrelation Function (ACF) of the given study hour score data
 ```
 import numpy as np
 import matplotlib.pyplot as plt
-
-
-scores = np.array([21, 47, 27, 75, 30, 20, 88, 60, 81, 25,
-                   85, 62, 41, 42, 17, 95, 30, 24, 67, 69,
-                   30, 54, 35, 76, 86])
-
+df = pd.read_csv('score.csv')
 n = len(scores)
 lags = 35
 acf_values = np.zeros(lags)
