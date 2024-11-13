@@ -1,5 +1,8 @@
 # Ex.No: 03   COMPUTE THE AUTO FUNCTION(ACF)
-Date: 
+
+## Name:H.Berjin Shabeck
+## Reg no:212222240018
+## Date:31/08/2024
 
 ### AIM:
 To Compute the AutoCorrelation Function (ACF) of the given study hour score data..
